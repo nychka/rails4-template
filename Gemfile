@@ -7,14 +7,14 @@ gem 'rails', '4.1.0'
 group :production do
     #gem 'mongoid', github: 'mongoid/mongoid'
     #gem 'bson_ext'
-    gem 'pg'
+    gem 'pg', '~> 0.17.1'
 end
 
-gem 'mysql2'
 gem 'devise'
 gem 'simple_form'
 
 group :test, :development do
+  gem 'mysql2'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver'

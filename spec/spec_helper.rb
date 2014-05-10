@@ -39,4 +39,19 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include FactoryGirl::Syntax::Methods
+  config.include ControllerMacros, :type => :controller
+  config.include FeatureMacros, :type => :feature
+
+  config.before(:suite) do
+    #DatabaseCleaner.strategy[:mongoid] = :truncation
+    DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+    DatabaseCleaner.clean
+  end
+  config.after(:each) do
+  end
 end
